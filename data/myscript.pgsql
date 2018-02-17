@@ -37,8 +37,11 @@ create table posts (
 );
 
 create table options (
-  id        SERIAl PRIMARY KEY,
-  poll_id   INTEGER REFERENCES polls(id)
+  id          SERIAl PRIMARY KEY,
+  poll_id     INTEGER REFERENCES polls(id)
+  title       TEXT,
+  description TEXT,
+  it_happened BOOLEAN
 )
 
 create table bets (
@@ -46,5 +49,6 @@ create table bets (
   expert	    boolean,
   amount	    real,
   created_at  timestamp not null,
-  comment     text
+  user_id     INTEGER REFERENCES users(id),
+  options
 );
